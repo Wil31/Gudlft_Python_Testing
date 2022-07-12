@@ -37,7 +37,7 @@ def test_login_unknown_email(client, captured_templates):
     rv = client.post(
         "showSummary", data=dict(email="unknown_email@nope.com")
     )
-    assert rv.status_code == 400
+    assert rv.status_code == 403
 
     assert len(captured_templates) == 1
 
@@ -50,7 +50,7 @@ def test_login_no_email(client, captured_templates):
     rv = client.post(
         "showSummary", data=dict(email="")
     )
-    assert rv.status_code == 400
+    assert rv.status_code == 403
 
     assert len(captured_templates) == 1
 

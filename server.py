@@ -35,7 +35,7 @@ def create_app(config):
                     == request.form['email']][0]
         except IndexError:
             logging.info("Email not found")
-            return render_template('email_not_found.html'), 400
+            return render_template('email_not_found.html'), 403
         return render_template('welcome.html', club=club, competitions=competitions)
 
     @app.route('/book/<competition>/<club>')
