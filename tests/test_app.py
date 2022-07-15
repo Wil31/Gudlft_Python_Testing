@@ -89,6 +89,7 @@ def test_purchase_places(client, captured_templates):
 def test_purchase_more_places_than_club_points_should_406(client, captured_templates):
     competition = "Spring Festival"
     club = "Simply Lift"
+    club_points = 13
     placesRequired = 14
     response = client.post(
         "purchasePlaces", data=dict(competition=competition,
@@ -100,3 +101,4 @@ def test_purchase_more_places_than_club_points_should_406(client, captured_templ
     assert len(captured_templates) == 1
     template, context = captured_templates[0]
     assert template.name == "welcome.html"
+    assert int(context['club']['points']) == club_points
