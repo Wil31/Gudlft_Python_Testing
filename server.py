@@ -4,6 +4,7 @@ from flask import Flask, render_template, request, redirect, flash, url_for
 
 logging.basicConfig(level=logging.DEBUG)
 
+
 def loadClubs():
     with open('clubs.json') as c:
         listOfClubs = json.load(c)['clubs']
@@ -40,14 +41,16 @@ def create_app(config):
 
     @app.route('/book/<competition>/<club>')
     def book(competition, club):
-        foundClub = [c for c in clubs if c['name'] == club][0]
-        foundCompetition = [
-            c for c in competitions if c['name'] == competition][0]
-        if foundClub and foundCompetition:
-            return render_template('booking.html', club=foundClub, competition=foundCompetition)
-        else:
-            flash("Something went wrong-please try again")
-            return render_template('welcome.html', club=club, competitions=competitions)
+        try:
+            foundClub = [c for c in clubs if c['name'] == club][0]
+            foundCompetition = [
+                c for c in competitions if c['name'] == competition][0]
+        except:
+            return render_template('404.html'), 404
+        if int(foundClub["points"]) <= 0:
+            flash(f"Info: you don't have any points for booking!")
+            return render_template('welcome.html', club=foundClub, competitions=competitions), 406
+        return render_template('booking.html', club=foundClub, competition=foundCompetition)
 
     @app.route('/purchasePlaces', methods=['POST'])
     def purchasePlaces():
@@ -55,8 +58,12 @@ def create_app(config):
                        == request.form['competition']][0]
         club = [c for c in clubs if c['name'] == request.form['club']][0]
         placesRequired = int(request.form['places'])
+        if placesRequired > int(club['points']):
+            flash(f"Error: cannot book more than your available points!")
+            return render_template('welcome.html', club=club, competitions=competitions), 406
         competition['numberOfPlaces'] = int(
             competition['numberOfPlaces'])-placesRequired
+        club['points'] = int(club['points']) - placesRequired
         flash('Great-booking complete!')
         return render_template('welcome.html', club=club, competitions=competitions)
 

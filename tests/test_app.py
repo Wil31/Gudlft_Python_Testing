@@ -1,7 +1,3 @@
-import email
-import logging
-from pydoc import cli
-
 from tests.conftest import client, captured_templates
 
 
@@ -57,3 +53,52 @@ def test_login_no_email(client, captured_templates):
     template, context = captured_templates[0]
 
     assert template.name == "email_not_found.html"
+
+
+def test_book_status_code_ok(client):
+    response = client.get("/book/Spring Festival/Simply Lift")
+    assert response.status_code == 200
+
+
+def test_book_should_return_booking_template(client, captured_templates):
+    response = client.get("/book/Spring Festival/Simply Lift")
+
+    assert len(captured_templates) == 1
+    template, context = captured_templates[0]
+    assert template.name == "booking.html"
+
+
+def test_purchase_places(client, captured_templates):
+    competition = "Spring Festival"
+    club = "Simply Lift"
+    club_points = 13
+    placesRequired = 2
+    response = client.post(
+        "purchasePlaces", data=dict(competition=competition,
+                                    club=club,
+                                    places=str(placesRequired))
+    )
+    assert response.status_code == 200
+
+    assert len(captured_templates) == 1
+    template, context = captured_templates[0]
+    assert template.name == "welcome.html"
+    assert context['club']['points'] == club_points - placesRequired
+
+
+def test_purchase_more_places_than_club_points_should_406(client, captured_templates):
+    competition = "Spring Festival"
+    club = "Simply Lift"
+    club_points = 13
+    placesRequired = 14
+    response = client.post(
+        "purchasePlaces", data=dict(competition=competition,
+                                    club=club,
+                                    places=str(placesRequired))
+    )
+    assert response.status_code == 406
+
+    assert len(captured_templates) == 1
+    template, context = captured_templates[0]
+    assert template.name == "welcome.html"
+    assert int(context['club']['points']) == club_points
