@@ -102,3 +102,47 @@ def test_purchase_more_places_than_club_points_should_406(client, captured_templ
     template, context = captured_templates[0]
     assert template.name == "welcome.html"
     assert int(context['club']['points']) == club_points
+
+
+def test_purchase_more_than_12_places_at_once_should_406(client, captured_templates):
+    competition = "Spring Festival"
+    club = "Simply Lift"
+    club_points = 13
+    placesRequired = 13
+    response = client.post(
+        "purchasePlaces", data=dict(competition=competition,
+                                    club=club,
+                                    places=str(placesRequired))
+    )
+    assert response.status_code == 406
+
+    assert len(captured_templates) == 1
+    template, context = captured_templates[0]
+    assert template.name == "welcome.html"
+    assert int(context['club']['points']) == club_points
+
+
+def test_purchase_more_than_12_places_in_competition_should_406(client, captured_templates):
+    competition = "Spring Festival"
+    club = "Simply Lift"
+    club_points = 13
+    placesRequired1 = 7
+    placesRequired2 = 6
+    response = client.post(
+        "purchasePlaces", data=dict(competition=competition,
+                                    club=club,
+                                    places=str(placesRequired1))
+    )
+    assert response.status_code == 200
+
+    response = client.post(
+        "purchasePlaces", data=dict(competition=competition,
+                                    club=club,
+                                    places=str(placesRequired2))
+    )
+    assert response.status_code == 406
+
+    assert len(captured_templates) == 2
+    template, context = captured_templates[1]
+    assert template.name == "welcome.html"
+    assert int(context['club']['points']) == 6
