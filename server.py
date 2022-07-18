@@ -1,6 +1,7 @@
 import json
 import logging
 from flask import Flask, render_template, request, redirect, flash, url_for
+from datetime import datetime
 
 logging.basicConfig(level=logging.DEBUG)
 
@@ -17,6 +18,15 @@ def loadCompetitions():
         return listOfCompetitions
 
 
+def check_outdated_competitions(competitions):
+    now = datetime.today()
+    for competition in competitions:
+        if competition['date_time_obj'] < now:
+            competition['outdated'] = True
+        else:
+            competition['outdated'] = False
+
+
 def create_app(config):
     app = Flask(__name__)
     app.config.from_object("config")
@@ -24,6 +34,13 @@ def create_app(config):
 
     competitions = loadCompetitions()
     clubs = loadClubs()
+
+    for competition in competitions:
+        comp_date_time = competition['date']
+        competition["date_time_obj"] = datetime.strptime(
+            comp_date_time, '%Y-%m-%d %H:%M:%S')
+
+    check_outdated_competitions(competitions)
 
     @app.route('/')
     def index():
@@ -37,6 +54,7 @@ def create_app(config):
         except IndexError:
             logging.info("Email not found")
             return render_template('email_not_found.html'), 403
+        check_outdated_competitions(competitions)
         return render_template('welcome.html', club=club, competitions=competitions)
 
     @app.route('/book/<competition>/<club>')
@@ -47,9 +65,14 @@ def create_app(config):
                 c for c in competitions if c['name'] == competition][0]
         except:
             return render_template('404.html'), 404
-        if int(foundClub["points"]) <= 0:
+
+        if foundCompetition['outdated'] is True:
+            flash(f"Info: cannot book a past competition!")
+            return render_template('welcome.html', club=foundClub, competitions=competitions), 406
+        elif int(foundClub["points"]) <= 0:
             flash(f"Info: you don't have any points for booking!")
             return render_template('welcome.html', club=foundClub, competitions=competitions), 406
+
         return render_template('booking.html', club=foundClub, competition=foundCompetition)
 
     @app.route('/purchasePlaces', methods=['POST'])

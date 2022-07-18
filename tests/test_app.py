@@ -146,3 +146,14 @@ def test_purchase_more_than_12_places_in_competition_should_406(client, captured
     template, context = captured_templates[1]
     assert template.name == "welcome.html"
     assert int(context['club']['points']) == 6
+
+
+def test_booking_outdated_comp_should_return_406(client, captured_templates):
+    competition = "Fall Classic"
+    club = "Simply Lift"
+    response = client.get(f"/book/{competition}/{club}")
+    assert response.status_code == 406
+
+    assert len(captured_templates) == 1
+    template, context = captured_templates[0]
+    assert template.name == "welcome.html"
