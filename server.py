@@ -104,7 +104,6 @@ def create_app(config):
         flash('Great-booking complete!')
         return render_template('welcome.html', club=club, competitions=competitions)
 
-    # TODO: Add route for points display
     @app.route('/clubsBoard')
     def clubsBoard():
         return render_template('clubs_board.html', clubs=clubs)
