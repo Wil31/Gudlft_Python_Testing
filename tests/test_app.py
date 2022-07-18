@@ -157,3 +157,14 @@ def test_booking_outdated_comp_should_return_406(client, captured_templates):
     assert len(captured_templates) == 1
     template, context = captured_templates[0]
     assert template.name == "welcome.html"
+
+
+def test_should_return_clubs_board(client, captured_templates):
+    number_of_clubs = 3
+    response = client.get("clubsBoard")
+    assert response.status_code == 200
+
+    assert len(captured_templates) == 1
+    template, context = captured_templates[0]
+    assert template.name == "clubs_board.html"
+    assert len(context['clubs']) == number_of_clubs

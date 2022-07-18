@@ -1,0 +1,34 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clubs Board | GUDLFT</title>
+</head>
+
+<body>
+    <h1>Clubs Board </h1>
+    <button><a href="{{url_for('index')}}">Return</a></button>
+
+    {% with messages = get_flashed_messages()%}
+    {% if messages %}
+    <ul>
+        {% for message in messages %}
+        <li>{{message}}</li>
+        {% endfor %}
+    </ul>
+    {% endif%}
+    <h2>Clubs summary:</h2>
+    <ul>
+        {% for club in clubs%}
+        <li>
+            <p>{{club['name']}}</p>
+            <p>Number of Points: {{club['points']}}</p>
+        </li>
+        <hr />
+        {% endfor %}
+    </ul>
+    {%endwith%}
+</body>
+
+</html>

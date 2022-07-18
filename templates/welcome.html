@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Summary | GUDLFT Registration</title>
+    <title>Summary | GUDLFT</title>
 </head>
 
 <body>
@@ -17,7 +17,8 @@
         {% endfor %}
     </ul>
     {% endif%}
-    Points available: {{club['points']}}
+    <p>Points available: {{club['points']}}</p>
+    <p><a href="{{ url_for('clubsBoard') }}">Clubs Board</a></p>
     <h3>Competitions:</h3>
     <ul>
         {% for comp in competitions%}
