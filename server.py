@@ -58,9 +58,23 @@ def create_app(config):
                        == request.form['competition']][0]
         club = [c for c in clubs if c['name'] == request.form['club']][0]
         placesRequired = int(request.form['places'])
+
         if placesRequired > int(club['points']):
             flash(f"Error: cannot book more than your available points!")
             return render_template('welcome.html', club=club, competitions=competitions), 406
+
+        if placesRequired > 12:
+            flash(f"Error: cannot book more than 12 places!")
+            return render_template('welcome.html', club=club, competitions=competitions), 406
+
+        if club['name'] in competition:
+            if competition[club['name']] + placesRequired > 12:
+                flash(f"Error: cannot book more than 12 places per competition!")
+                return render_template('welcome.html', club=club, competitions=competitions), 406
+            competition[club['name']] += placesRequired
+        else:
+            competition[club['name']] = placesRequired
+
         competition['numberOfPlaces'] = int(
             competition['numberOfPlaces'])-placesRequired
         club['points'] = int(club['points']) - placesRequired
