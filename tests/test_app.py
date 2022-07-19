@@ -1,4 +1,5 @@
 from tests.conftest import client, captured_templates
+from flask import url_for
 
 
 def test_should_status_code_ok(client):
@@ -66,6 +67,32 @@ def test_book_should_return_booking_template(client, captured_templates):
     assert len(captured_templates) == 1
     template, context = captured_templates[0]
     assert template.name == "booking.html"
+
+
+def test_book_nonexistant_competition_should_404(client):
+    response = client.get("/book/nonexistant comp/Simply Lift")
+    assert response.status_code == 404
+
+
+def test_book_nonexistant_competition_should_return_404_template(client, captured_templates):
+    response = client.get("/book/nonexistant comp/Simply Lift")
+
+    assert len(captured_templates) == 1
+    template, context = captured_templates[0]
+    assert template.name == "404.html"
+
+
+def test_book_nonexistant_club_should_404(client):
+    response = client.get("/book/Spring Festival/unknownclub")
+    assert response.status_code == 404
+
+
+def test_book_nonexistant_club_should_return_404_template(client, captured_templates):
+    response = client.get("/book/Spring Festival/unknownclub")
+
+    assert len(captured_templates) == 1
+    template, context = captured_templates[0]
+    assert template.name == "404.html"
 
 
 def test_purchase_places(client, captured_templates):
@@ -168,3 +195,14 @@ def test_should_return_clubs_board(client, captured_templates):
     template, context = captured_templates[0]
     assert template.name == "clubs_board.html"
     assert len(context['clubs']) == number_of_clubs
+
+
+def test_logout_should_status_code_302(client):
+    response = client.get(url_for('logout'))
+    assert response.status_code == 302
+
+
+def test_logout_should_return_index(client):
+    response = client.get(url_for('logout'), follow_redirects=True)
+
+    assert response.request.path == url_for('index')
