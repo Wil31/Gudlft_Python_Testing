@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <title>flake8 violations: tests\test_app.py</title>
+      <meta http-equiv="Content-Type" value="text/html; charset=UTF-8">
+      <link rel="stylesheet" href="styles.css">
+<script>
+function bindHandler(link) {
+   var code = link.getAttribute('data-code');
+   var key = location.pathname + '#' + code;
+
+   var ul = link.parentNode.querySelector('.details');
+   if (sessionStorage[key] != 'open') {
+      ul.style.display = 'none';
+   }
+   link.addEventListener('click', function (event) {
+      if (!ul.style.display || ul.style.display == 'none') {
+         ul.style.display = 'block';
+         sessionStorage[key] = 'open';
+      } else {
+         ul.style.display = 'none';
+         sessionStorage[key] = 'closed';
+      }
+   });
+}
+
+window.addEventListener('DOMContentLoaded', function () {
+   var links = document.querySelectorAll('#index > li > a');
+   for (var i = 0; i < links.length; i++) {
+      bindHandler(links[i]);
+   }
+});
+</script>
+   </head>
+   <body>
+      <div id="masthead" class="sev-1"></div>
+      <div id="page">
+         <p id="srclink">
+            <a title="View full annotated source"
+               href="tests.test_app.source.html">
+               <img src="file.svg" alt="&#x2261;">
+            </a></p>
+         <h1>
+            <a href="index.html">
+               <img src="back.svg" alt="&#x2B05;">
+               tests\test_app.py
+            </a>
+         </h1>
+
+         <ul id="index">
+         
+         <li>
+            <a data-code="F811">
+               <span class="count sev-1">
+                  32
+               </span>
+               <strong>F811:</strong> redefinition of unused 'client' from line 1
+               
+                  (and 1 similar)
+               
+            </a>
+            <ul class="details">
+            <li>
+               
+               <p>Redefinition of unused 'client' from line 1:</p>
+               
+               <a href="tests.test_app.source.html#l5">
+                  <tt><i>5</i> <span class="k">def</span> <span class="nf">test_should_status_code_ok</span><span class="p">(</span><span class="n">client</span><span class="p">):</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Redefinition of unused 'captured_templates' from line 1:</p>
+               
+               <a href="tests.test_app.source.html#l10">
+                  <tt><i>10</i> <span class="k">def</span> <span class="nf">test_should_return_index</span><span class="p">(</span><span class="n">client</span><span class="p">,</span> <span class="n">captured_templates</span><span class="p">):</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Redefinition of unused 'client' from line 1:</p>
+               
+               <a href="tests.test_app.source.html#l10">
+                  <tt><i>10</i> <span class="k">def</span> <span class="nf">test_should_return_index</span><span class="p">(</span><span class="n">client</span><span class="p">,</span> <span class="n">captured_templates</span><span class="p">):</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Redefinition of unused 'captured_templates' from line 1:</p>
+               
+               <a href="tests.test_app.source.html#l20">
+                  <tt><i>20</i> <span class="k">def</span> <span class="nf">test_login_email</span><span class="p">(</span><span class="n">client</span><span class="p">,</span> <span class="n">captured_templates</span><span class="p">):</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Redefinition of unused 'client' from line 1:</p>
+               
+               <a href="tests.test_app.source.html#l20">
+                  <tt><i>20</i> <span class="k">def</span> <span class="nf">test_login_email</span><span class="p">(</span><span class="n">client</span><span class="p">,</span> <span class="n">captured_templates</span><span class="p">):</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Redefinition of unused 'captured_templates' from line 1:</p>
+               
+               <a href="tests.test_app.source.html#l31">
+                  <tt><i>31</i> <span class="k">def</span> <span class="nf">test_login_unknown_email</span><span class="p">(</span><span class="n">client</span><span class="p">,</span> <span class="n">captured_templates</span><span class="p">):</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Redefinition of unused 'client' from line 1:</p>
+               
+               <a href="tests.test_app.source.html#l31">
+                  <tt><i>31</i> <span class="k">def</span> <span class="nf">test_login_unknown_email</span><span class="p">(</span><span class="n">client</span><span class="p">,</span> <span class="n">captured_templates</span><span class="p">):</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Redefinition of unused 'captured_templates' from line 1:</p>
+               
+               <a href="tests.test_app.source.html#l42">
+                  <tt><i>42</i> <span class="k">def</span> <span class="nf">test_login_no_email</span><span class="p">(</span><span class="n">client</span><span class="p">,</span> <span class="n">captured_templates</span><span class="p">):</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Redefinition of unused 'client' from line 1:</p>
+               
+               <a href="tests.test_app.source.html#l42">
+                  <tt><i>42</i> <span class="k">def</span> <span class="nf">test_login_no_email</span><span class="p">(</span><span class="n">client</span><span class="p">,</span> <span class="n">captured_templates</span><span class="p">):</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Redefinition of unused 'client' from line 1:</p>
+               
+               <a href="tests.test_app.source.html#l53">
+                  <tt><i>53</i> <span class="k">def</span> <span class="nf">test_book_status_code_ok</span><span class="p">(</span><span class="n">client</span><span class="p">):</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Redefinition of unused 'captured_templates' from line 1:</p>
+               
+               <a href="tests.test_app.source.html#l58">
+                  <tt><i>58</i> <span class="k">def</span> <span class="nf">test_book_should_return_booking_template</span><span class="p">(</span><span class="n">client</span><span class="p">,</span> <span class="n">captured_templates</span><span class="p">):</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Redefinition of unused 'client' from line 1:</p>
+               
+               <a href="tests.test_app.source.html#l58">
+                  <tt><i>58</i> <span class="k">def</span> <span class="nf">test_book_should_return_booking_template</span><span class="p">(</span><span class="n">client</span><span class="p">,</span> <span class="n">captured_templates</span><span class="p">):</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Redefinition of unused 'client' from line 1:</p>
+               
+               <a href="tests.test_app.source.html#l66">
+                  <tt><i>66</i> <span class="k">def</span> <span class="nf">test_book_nonexistant_competition_should_404</span><span class="p">(</span><span class="n">client</span><span class="p">):</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Redefinition of unused 'captured_templates' from line 1:</p>
+               
+               <a href="tests.test_app.source.html#l72">
+                  <tt><i>72</i>     <span class="n">client</span><span class="p">,</span> <span class="n">captured_templates</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Redefinition of unused 'client' from line 1:</p>
+               
+               <a href="tests.test_app.source.html#l72">
+                  <tt><i>72</i>     <span class="n">client</span><span class="p">,</span> <span class="n">captured_templates</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Redefinition of unused 'client' from line 1:</p>
+               
+               <a href="tests.test_app.source.html#l81">
+                  <tt><i>81</i> <span class="k">def</span> <span class="nf">test_book_nonexistant_club_should_404</span><span class="p">(</span><span class="n">client</span><span class="p">):</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Redefinition of unused 'captured_templates' from line 1:</p>
+               
+               <a href="tests.test_app.source.html#l86">
+                  <tt><i>86</i> <span class="k">def</span> <span class="nf">test_book_nonexistant_club_should_return_404_template</span><span class="p">(</span><span class="n">client</span><span class="p">,</span> <span class="n">captured_templates</span><span class="p">):</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Redefinition of unused 'client' from line 1:</p>
+               
+               <a href="tests.test_app.source.html#l86">
+                  <tt><i>86</i> <span class="k">def</span> <span class="nf">test_book_nonexistant_club_should_return_404_template</span><span class="p">(</span><span class="n">client</span><span class="p">,</span> <span class="n">captured_templates</span><span class="p">):</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Redefinition of unused 'captured_templates' from line 1:</p>
+               
+               <a href="tests.test_app.source.html#l94">
+                  <tt><i>94</i> <span class="k">def</span> <span class="nf">test_purchase_places</span><span class="p">(</span><span class="n">client</span><span class="p">,</span> <span class="n">captured_templates</span><span class="p">):</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Redefinition of unused 'client' from line 1:</p>
+               
+               <a href="tests.test_app.source.html#l94">
+                  <tt><i>94</i> <span class="k">def</span> <span class="nf">test_purchase_places</span><span class="p">(</span><span class="n">client</span><span class="p">,</span> <span class="n">captured_templates</span><span class="p">):</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Redefinition of unused 'captured_templates' from line 1:</p>
+               
+               <a href="tests.test_app.source.html#l111">
+                  <tt><i>111</i> <span class="k">def</span> <span class="nf">test_purchase_more_places_than_club_points_should_406</span><span class="p">(</span><span class="n">client</span><span class="p">,</span> <span class="n">captured_templates</span><span class="p">):</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Redefinition of unused 'client' from line 1:</p>
+               
+               <a href="tests.test_app.source.html#l111">
+                  <tt><i>111</i> <span class="k">def</span> <span class="nf">test_purchase_more_places_than_club_points_should_406</span><span class="p">(</span><span class="n">client</span><span class="p">,</span> <span class="n">captured_templates</span><span class="p">):</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Redefinition of unused 'captured_templates' from line 1:</p>
+               
+               <a href="tests.test_app.source.html#l128">
+                  <tt><i>128</i> <span class="k">def</span> <span class="nf">test_purchase_more_than_12_places_at_once_should_406</span><span class="p">(</span><span class="n">client</span><span class="p">,</span> <span class="n">captured_templates</span><span class="p">):</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Redefinition of unused 'client' from line 1:</p>
+               
+               <a href="tests.test_app.source.html#l128">
+                  <tt><i>128</i> <span class="k">def</span> <span class="nf">test_purchase_more_than_12_places_at_once_should_406</span><span class="p">(</span><span class="n">client</span><span class="p">,</span> <span class="n">captured_templates</span><span class="p">):</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Redefinition of unused 'captured_templates' from line 1:</p>
+               
+               <a href="tests.test_app.source.html#l146">
+                  <tt><i>146</i>     <span class="n">client</span><span class="p">,</span> <span class="n">captured_templates</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Redefinition of unused 'client' from line 1:</p>
+               
+               <a href="tests.test_app.source.html#l146">
+                  <tt><i>146</i>     <span class="n">client</span><span class="p">,</span> <span class="n">captured_templates</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Redefinition of unused 'captured_templates' from line 1:</p>
+               
+               <a href="tests.test_app.source.html#l170">
+                  <tt><i>170</i> <span class="k">def</span> <span class="nf">test_booking_outdated_comp_should_return_406</span><span class="p">(</span><span class="n">client</span><span class="p">,</span> <span class="n">captured_templates</span><span class="p">):</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Redefinition of unused 'client' from line 1:</p>
+               
+               <a href="tests.test_app.source.html#l170">
+                  <tt><i>170</i> <span class="k">def</span> <span class="nf">test_booking_outdated_comp_should_return_406</span><span class="p">(</span><span class="n">client</span><span class="p">,</span> <span class="n">captured_templates</span><span class="p">):</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Redefinition of unused 'captured_templates' from line 1:</p>
+               
+               <a href="tests.test_app.source.html#l181">
+                  <tt><i>181</i> <span class="k">def</span> <span class="nf">test_should_return_clubs_board</span><span class="p">(</span><span class="n">client</span><span class="p">,</span> <span class="n">captured_templates</span><span class="p">):</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Redefinition of unused 'client' from line 1:</p>
+               
+               <a href="tests.test_app.source.html#l181">
+                  <tt><i>181</i> <span class="k">def</span> <span class="nf">test_should_return_clubs_board</span><span class="p">(</span><span class="n">client</span><span class="p">,</span> <span class="n">captured_templates</span><span class="p">):</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Redefinition of unused 'client' from line 1:</p>
+               
+               <a href="tests.test_app.source.html#l192">
+                  <tt><i>192</i> <span class="k">def</span> <span class="nf">test_logout_should_status_code_302</span><span class="p">(</span><span class="n">client</span><span class="p">):</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Redefinition of unused 'client' from line 1:</p>
+               
+               <a href="tests.test_app.source.html#l197">
+                  <tt><i>197</i> <span class="k">def</span> <span class="nf">test_logout_should_return_index</span><span class="p">(</span><span class="n">client</span><span class="p">):</span></tt>
+               </a>
+            </li>
+            </ul>
+         </li>
+         
+         <li>
+            <a data-code="F841">
+               <span class="count sev-1">
+                  4
+               </span>
+               <strong>F841:</strong> local variable 'response' is assigned to but never used
+               
+            </a>
+            <ul class="details">
+            <li>
+               
+               <a href="tests.test_app.source.html#l11">
+                  <tt><i>11</i>     <span class="n">response</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;/&quot;</span><span class="p">)</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="tests.test_app.source.html#l59">
+                  <tt><i>59</i>     <span class="n">response</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;/book/Spring Festival/Simply Lift&quot;</span><span class="p">)</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="tests.test_app.source.html#l74">
+                  <tt><i>74</i>     <span class="n">response</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;/book/nonexistant comp/Simply Lift&quot;</span><span class="p">)</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="tests.test_app.source.html#l87">
+                  <tt><i>87</i>     <span class="n">response</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;/book/Spring Festival/unknownclub&quot;</span><span class="p">)</span></tt>
+               </a>
+            </li>
+            </ul>
+         </li>
+         
+         <li>
+            <a data-code="F401">
+               <span class="count sev-1">
+                  2
+               </span>
+               <strong>F401:</strong> 'tests.conftest.client' imported but unused
+               
+                  (and 1 similar)
+               
+            </a>
+            <ul class="details">
+            <li>
+               
+               <p>'tests.conftest.captured_templates' imported but unused:</p>
+               
+               <a href="tests.test_app.source.html#l1">
+                  <tt><i>1</i> <span class="kn">from</span> <span class="nn">tests.conftest</span> <span class="kn">import</span> <span class="n">client</span><span class="p">,</span> <span class="n">captured_templates</span></tt>
+               </a>
+            </li><li>
+               
+               <p>'tests.conftest.client' imported but unused:</p>
+               
+               <a href="tests.test_app.source.html#l1">
+                  <tt><i>1</i> <span class="kn">from</span> <span class="nn">tests.conftest</span> <span class="kn">import</span> <span class="n">client</span><span class="p">,</span> <span class="n">captured_templates</span></tt>
+               </a>
+            </li>
+            </ul>
+         </li>
+         
+         </ul>
+      </div>
+   </body>
+</html>
