@@ -1,4 +1,3 @@
-from tests.conftest import client, captured_templates
 from flask import url_for
 
 
@@ -8,7 +7,7 @@ def test_should_status_code_ok(client):
 
 
 def test_should_return_index(client, captured_templates):
-    response = client.get("/")
+    client.get("/")
 
     assert len(captured_templates) == 1
 
@@ -56,7 +55,7 @@ def test_book_status_code_ok(client):
 
 
 def test_book_should_return_booking_template(client, captured_templates):
-    response = client.get("/book/Spring Festival/Simply Lift")
+    client.get("/book/Spring Festival/Simply Lift")
 
     assert len(captured_templates) == 1
     template, context = captured_templates[0]
@@ -71,7 +70,7 @@ def test_book_nonexistant_competition_should_404(client):
 def test_book_nonexistant_competition_should_return_404_template(
     client, captured_templates
 ):
-    response = client.get("/book/nonexistant comp/Simply Lift")
+    client.get("/book/nonexistant comp/Simply Lift")
 
     assert len(captured_templates) == 1
     template, context = captured_templates[0]
@@ -84,7 +83,7 @@ def test_book_nonexistant_club_should_404(client):
 
 
 def test_book_nonexistant_club_should_return_404_template(client, captured_templates):
-    response = client.get("/book/Spring Festival/unknownclub")
+    client.get("/book/Spring Festival/unknownclub")
 
     assert len(captured_templates) == 1
     template, context = captured_templates[0]
