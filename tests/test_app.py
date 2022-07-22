@@ -96,6 +96,7 @@ def test_purchase_places(client, captured_templates):
     club = "Simply Lift"
     club_points = 13
     placesRequired = 2
+    pointsRequired = placesRequired * 3
     response = client.post(
         "purchasePlaces",
         data=dict(competition=competition, club=club, places=str(placesRequired)),
@@ -105,14 +106,14 @@ def test_purchase_places(client, captured_templates):
     assert len(captured_templates) == 1
     template, context = captured_templates[0]
     assert template.name == "welcome.html"
-    assert context["club"]["points"] == club_points - placesRequired
+    assert context["club"]["points"] == club_points - pointsRequired
 
 
 def test_purchase_more_places_than_club_points_should_406(client, captured_templates):
     competition = "Spring Festival"
     club = "Simply Lift"
     club_points = 13
-    placesRequired = 14
+    placesRequired = 5
     response = client.post(
         "purchasePlaces",
         data=dict(competition=competition, club=club, places=str(placesRequired)),
@@ -146,7 +147,7 @@ def test_purchase_more_than_12_places_in_competition_should_406(
     client, captured_templates
 ):
     competition = "Spring Festival"
-    club = "Simply Lift"
+    club = "Test Club"
     placesRequired1 = 7
     placesRequired2 = 6
     response = client.post(
@@ -164,7 +165,7 @@ def test_purchase_more_than_12_places_in_competition_should_406(
     assert len(captured_templates) == 2
     template, context = captured_templates[1]
     assert template.name == "welcome.html"
-    assert int(context["club"]["points"]) == 6
+    assert int(context["club"]["points"]) == 79
 
 
 def test_booking_outdated_comp_should_return_406(client, captured_templates):
@@ -179,7 +180,7 @@ def test_booking_outdated_comp_should_return_406(client, captured_templates):
 
 
 def test_should_return_clubs_board(client, captured_templates):
-    number_of_clubs = 3
+    number_of_clubs = 4
     response = client.get("clubsBoard")
     assert response.status_code == 200
 
